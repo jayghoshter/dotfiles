@@ -17,7 +17,8 @@ map('n', '<space>b', builtin.buffers)
 map('n', '<space>;', builtin.command_history)
 map('n', '<space>/', builtin.search_history)
 map('n', '<space>t', builtin.builtin)
-map('n', '<space>s', builtin.lsp_dynamic_workspace_symbols)
+map('n', '<space>d', function() builtin.lsp_dynamic_workspace_symbols({fname_width=60,}) end)
+map('n', '<space>s', function() builtin.lsp_document_symbols({symbol_width=60}) end)
 map('n', '<space>i', builtin.lsp_implementations)
 map('n', '<space>r', builtin.reloader)
 map('n', '<space>j', builtin.jumplist)
@@ -58,6 +59,7 @@ require('telescope').setup {
         preview = {
             hide_on_startup=true,
         },
+        path_display = {'shorten'},
     },
     extensions = {
         fzf = {
@@ -96,6 +98,13 @@ require('telescope').setup {
             --     },
             },
         },
+        lsp_document_symbols= {
+            fname_width = {100},
+            symbol_width = {100},
+        },
+        lsp_dynamic_workspace_symbols = {
+            fname_width = {100},
+        }
     }
 
 require('telescope').load_extension('gh')

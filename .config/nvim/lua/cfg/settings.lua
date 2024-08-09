@@ -8,6 +8,18 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.autoindent = false
 opt.smartindent = false
+opt.title = true
+
+-- Set the shell to pwsh on Windows
+if vim.fn.has('win32') == 1 then
+    vim.opt.shell = vim.fn.expand('~/scoop/apps/pwsh/current/pwsh.exe')
+    vim.opt.shellcmdflag = '-NoLogo -NoProfile -Command'  -- Command to pass when executing shell commands
+    vim.opt.shellquote = ''                          -- No need to quote the arguments
+    vim.opt.shellxquote = ''                         -- No need to quote the shell itself
+    vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode' -- Redirect output
+    vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode' -- Redirect stderr to stdout
+    vim.opt.shellslash = false                       -- Use backslashes for paths
+end
 
 -- Buffers
 opt.hidden = true -- Buffer switching without saving
