@@ -197,7 +197,7 @@ return {
 
     { "folke/neodev.nvim", opts = {}, config=true},
 
-    "stefandtw/quickfix-reflector.vim",
+    -- "stefandtw/quickfix-reflector.vim",
 
     {
         "linux-cultist/venv-selector.nvim",
